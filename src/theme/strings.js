@@ -1,6 +1,8 @@
 const strings = {
     strLogin: 'LOGIN',
-    strRegister: 'REGISTER'
+    strRegister: 'REGISTER',
+    strSignUp: 'SignUp',
+    strForgotPassword: 'Forgot Password'
 }
 
 export default strings

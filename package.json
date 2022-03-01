@@ -29,6 +29,7 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
+    "react-native-form-validator": "^0.5.1",
     "react-native-gesture-handler": "~2.1.0",
     "react-native-reanimated": "~2.3.1",
     "react-native-safe-area-context": "3.3.2",
@@ -39,7 +40,8 @@
     "react-native-web": "0.17.1",
     "react-redux": "^7.1.1",
     "redux": "^4.0.4",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "validate.js": "^0.13.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
