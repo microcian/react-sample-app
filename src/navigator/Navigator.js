@@ -5,13 +5,14 @@ import { useSelector, useDispatch } from 'react-redux'
 import { authenticate } from 'slices/app.slice'
 
 import DrawerNavigator from './Drawer'
+import { AuthOptionsNavigator } from './Stacks'
 
 const Navigator = () => {
   const { checked, loggedIn } = useSelector((state) => state.app)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(authenticate({ loggedIn: true, checked: true }))
+    dispatch(authenticate({ loggedIn: false, checked: false }))
   }, [])
 
   // TODO: switch router by loggedIn state
@@ -22,7 +23,9 @@ const Navigator = () => {
       <DrawerNavigator />
     </NavigationContainer>
   ) : (
-    <Text>Loading...</Text>
+    <NavigationContainer>
+      <AuthOptionsNavigator />
+    </NavigationContainer>
   )
 }
 

@@ -28,9 +28,9 @@ const styles = {
   profileImage: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: 40, 
-    height: 40, 
-    borderRadius: 40/ 2,
+    width: 40,
+    height: 40,
+    borderRadius: 40 / 2,
     backgroundColor: '#000000',
     paddingHorizontal: 10
   },
@@ -77,11 +77,11 @@ const DrawerMenu = ({ navigation }) => (
   }} 
   
 /> */}
-<Image style={styles.logo}
- source={{
-    uri: 'https://raw.githubusercontent.com/AboutReact/sampleresource/master/old_logo.png'
-  }}  />
-   <View style={styles.logo_text}>
+    <Image style={styles.logo}
+      source={{
+        uri: 'https://raw.githubusercontent.com/AboutReact/sampleresource/master/old_logo.png'
+      }} />
+    <View style={styles.logo_text}>
       <Text>Drawer Menu</Text>
     </View>
 
@@ -103,7 +103,7 @@ const DrawerMenu = ({ navigation }) => (
 
     <View style={styles.menu_text}>
       <Text
-      onPress={() => showToastWithGravityAndOffset()}
+        onPress={() => showToastWithGravityAndOffset()}
       >Logout</Text>
     </View>
   </SafeAreaView>

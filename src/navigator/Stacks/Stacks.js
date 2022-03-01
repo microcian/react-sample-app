@@ -7,6 +7,7 @@ import Details from 'pages/Details'
 import HeaderLeft from './HeaderLeft'
 import HeaderTitle from './HeaderTitle'
 import AuthOptions from '../../pages/auth/options/AuthOptions'
+import LoginView from '../../pages/auth/login/LoginView'
 
 // ------------------------------------
 // Constants
@@ -60,11 +61,16 @@ export const AuthOptionsNavigator = () => (
     <Stack.Screen
       name="AuthOptions"
       component={AuthOptions}
-      options={({ navigation }) => ({
-        title: 'AuthOptions',
-        headerLeft: () => <HeaderLeft navigation={navigation} />,
-        headerTitle: () => <HeaderTitle />,
-      })}
+      options={{
+        headerShown: false,
+      }}
+    />
+    <Stack.Screen
+      name="Login"
+      component={LoginView}
+      options={{
+        headerShown: false,
+      }}
     />
   </Stack.Navigator>
 )

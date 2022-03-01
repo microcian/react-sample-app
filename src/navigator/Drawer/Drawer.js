@@ -6,7 +6,7 @@ import {
 } from '@react-navigation/drawer'
 import DrawerMenu from './DrawerMenu'
 import TabNavigator from '../Tabs'
-import { AuthOptionsNavigator } from '../Stacks'
+
 
 const Drawer = createDrawerNavigator()
 

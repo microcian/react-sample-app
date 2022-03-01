@@ -1,16 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { TouchableOpacity, Text } from 'react-native'
+import { colors } from 'theme'
 
 const styles = {
   root: {
-    paddingVertical: 8,
+    paddingVertical: 10,
     paddingHorizontal: 16,
-    borderRadius: 5,
+    borderRadius: 7,
+    borderColor: colors.colorBlack
   },
   text: {
     textAlign: 'center',
-    fontSize: 16,
+    fontSize: 15.5,
   },
 }
 
@@ -20,12 +22,14 @@ const Button = ({
   height,
   color,
   backgroundColor,
+  borderColor,
+  borderWidth,
   onPress,
   children,
   textStyle,
   style,
 }) => {
-  const btnStyle = [styles.root, { width, height, backgroundColor }, style]
+  const btnStyle = [styles.root, { width, height, backgroundColor, borderColor, borderWidth }, style]
   const txtStyle = [styles.text, { color }, textStyle]
   return (
     <TouchableOpacity onPress={onPress} style={btnStyle}>
@@ -41,22 +45,26 @@ Button.propTypes = {
   height: PropTypes.string,
   color: PropTypes.string,
   backgroundColor: PropTypes.string,
+  borderColor: PropTypes.string,
+  borderWidth: PropTypes.number,
   onPress: PropTypes.func,
   children: PropTypes.string,
   textStyle: PropTypes.shape({}),
-  style: PropTypes.shape({}),
+  style: PropTypes.shape({})
 }
 
 Button.defaultProps = {
   title: null,
   width: 'auto',
   height: 'auto',
-  color: 'black',
+  color: colors.colorBlack,
   backgroundColor: '#cacaca',
-  onPress: () => {},
+  borderColor: '#00000000',
+  borderWidth: 0,
+  onPress: () => { },
   children: null,
   textStyle: {},
-  style: {},
+  style: {}
 }
 
 export default Button

@@ -4,7 +4,7 @@ import {
   StyleSheet, Text, View, Image, ImageBackground
 } from 'react-native'
 import Button from 'components/Button'
-import { colors, images, strings } from 'theme'
+import { colors, images } from 'theme'
 
 const styles = StyleSheet.create({
   root: {
@@ -38,23 +38,23 @@ const styles = StyleSheet.create({
   }
 })
 
-const AuthOptions = ({ navigation }) => (
+const LoginView = ({ navigation }) => (
   <View style={styles.root}>
     <ImageBackground style={styles.imageBackground} source={images.app_background}>
 
       <Image style={styles.appLogo}
         source={images.app_logo} />
       <Button
-        title={strings.strLogin}
+        title="LOGIN"
         color={colors.colorWhite}
         style={styles.loginButton}
         backgroundColor={colors.colorDimBlack}
-        onPress={() => {
-          navigation.navigate('Login', { from: 'AuthOptions' })
-        }}
+      // onPress={() => {
+      //   navigation.navigate('Details', { from: 'Home' })
+      // }}
       />
       <Button
-        title={strings.strRegister}
+        title="REGISTER"
         color={colors.colorBlack}
         style={styles.normalButton}
         backgroundColor={colors.transparent}
@@ -65,14 +65,14 @@ const AuthOptions = ({ navigation }) => (
   </View>
 )
 
-AuthOptions.propTypes = {
+LoginView.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func,
   }),
 }
 
-AuthOptions.defaultProps = {
+LoginView.defaultProps = {
   navigation: { navigate: () => null },
 }
 
-export default AuthOptions
+export default LoginView
