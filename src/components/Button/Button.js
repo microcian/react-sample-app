@@ -5,10 +5,8 @@ import { colors } from 'theme'
 
 const styles = {
   root: {
-    paddingVertical: 10,
-    paddingHorizontal: 16,
-    borderRadius: 7,
-    borderColor: colors.colorBlack
+    paddingVertical: 10, paddingHorizontal: 16,
+    borderRadius: 7, borderColor: colors.colorBlack
   },
   text: {
     textAlign: 'center',
@@ -28,8 +26,9 @@ const Button = ({
   children,
   textStyle,
   style,
+  disabled
 }) => {
-  const btnStyle = [styles.root, { width, height, backgroundColor, borderColor, borderWidth }, style]
+  const btnStyle = [styles.root, { width, height, backgroundColor, borderColor, borderWidth, disabled }, style]
   const txtStyle = [styles.text, { color }, textStyle]
   return (
     <TouchableOpacity onPress={onPress} style={btnStyle}>
@@ -50,7 +49,8 @@ Button.propTypes = {
   onPress: PropTypes.func,
   children: PropTypes.string,
   textStyle: PropTypes.shape({}),
-  style: PropTypes.shape({})
+  style: PropTypes.shape({}),
+  disabled: PropTypes.bool
 }
 
 Button.defaultProps = {
@@ -58,13 +58,14 @@ Button.defaultProps = {
   width: 'auto',
   height: 'auto',
   color: colors.colorBlack,
-  backgroundColor: '#cacaca',
+  backgroundColor: colors.colorDimBlack,
   borderColor: '#00000000',
   borderWidth: 0,
   onPress: () => { },
   children: null,
   textStyle: {},
-  style: {}
+  style: {},
+  disabled: false
 }
 
 export default Button

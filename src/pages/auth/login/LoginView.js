@@ -1,10 +1,17 @@
 import React, { useState } from 'react'
+import { applyMiddleware } from 'redux'
 import PropTypes from 'prop-types'
-import { StyleSheet, Text, View, Image, ImageBackground, TouchableOpacity, TextInput, Alert } from "react-native"
-import AppTextField from '../../../utils/AppTextField'
+import {
+  StyleSheet, Text, View,
+  Image, ImageBackground, TouchableOpacity, TextInput, Alert
+} from "react-native"
+import CustomAppTextField from '../../../components/input/CustomInput'
 import validateWrapper from '../../../utils/ValidateWrapper'
 import Button from 'components/Button'
 import { colors, images, strings } from 'theme'
+import ReduxThunk from 'redux-thunk'
+import { async } from 'validate.js'
+
 
 const styles = StyleSheet.create({
   root: {
@@ -23,7 +30,7 @@ const styles = StyleSheet.create({
     marginTop: 120, marginStart: 30, marginEnd: 30, marginBottom: 10
   },
   textFieldStyle: {
-    marginTop: 20, borderRadius: 5, height: 50, fontSize: 15, borderWidth: 0.5, paddingLeft: 10
+    marginTop: 20
   },
   forgotPassword: {
     marginTop: 10, height: 40, paddingRight: 0, alignSelf: 'flex-end'
@@ -42,33 +49,6 @@ const styles = StyleSheet.create({
   }
 })
 
-// const loginView = ({ navigation }) => (
-//   <View style={styles.root}>
-//     <ImageBackground style={styles.imageBackground} source={images.app_background}>
-
-//       <Image style={styles.appLogo}
-//         source={images.app_logo} />
-//       <Button
-//         title="LOGIN"
-//         color={colors.colorWhite}
-//         style={styles.loginButton}
-//         backgroundColor={colors.colorDimBlack}
-//       // onPress={() => {
-//       //   navigation.navigate('Details', { from: 'Home' })
-//       // }}
-//       />
-//       <Button
-//         title="REGISTER"
-//         color={colors.colorBlack}
-//         style={styles.normalButton}
-//         backgroundColor={colors.transparent}
-//         borderColor={colors.colorBlack}
-//         borderWidth={0.5}
-//       />
-//     </ImageBackground>
-//   </View>
-// )
-
 const loginView = ({ navigation }) => {
   const [email, setEmailState] = useState('');
   const [password, setPassState] = useState('');
@@ -78,6 +58,50 @@ const loginView = ({ navigation }) => {
 
   const validateInput = (emailError == null && passError == null) ? true : false
 
+  const emailInputHandler = (enteredValue) => {
+    setEmailState(enteredValue)
+    console.log(enteredValue);
+  }
+
+  // const loginAPI = () => {
+  //   async dispatch => {
+  //     const response = await fetch('https://phonepayinc.com/api/mobile/login', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify({
+  //         email,
+  //         phone,
+  //         password
+  //       })
+  //     })
+  //     const responseData = await response.json()
+  //     console.log(responseData)
+  //   }
+
+  // }
+
+  const loginApiAsync = async () => {
+    try {
+      const response = await fetch('https://phonepayinc.com/api/mobile/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: email,
+          phone: null,
+          password: password
+        })
+      });
+      const json = await response.json();
+      console.log(json)
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   console.log(emailError);
   console.log(passError);
   console.log(validateInput);
@@ -85,14 +109,14 @@ const loginView = ({ navigation }) => {
   return (
     <View style={styles.root}>
       <Text style={{ fontSize: 35, fontWeight: 'bold' }}>Login</Text >
-      <AppTextField style={styles.textFieldStyle} placeholder='Email' onChangeText={
+      <CustomAppTextField style={styles.textFieldStyle} placeholder='Email' onChangeText={
         value => {
           setEmailState(value)
           console.log(value);
         }
       } error={emailError}
       />
-      <AppTextField style={styles.textFieldStyle} placeholder='Password' onChangeText={
+      <CustomAppTextField style={styles.textFieldStyle} placeholder='Password' onChangeText={
         value => {
           setPassState(value)
           console.log(value);
@@ -115,7 +139,7 @@ const loginView = ({ navigation }) => {
         disabled={
           !validateInput
         }
-        onPress={() => alert("Clicked")}
+        onPress={() => loginApiAsync()}
         activeOpacity={validateInput ? 1 : 0.7}
       />
 

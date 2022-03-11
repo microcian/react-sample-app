@@ -4,8 +4,7 @@ import { images } from 'theme'
 
 const styles = StyleSheet.create({
   logo: {
-    width: 32,
-    height: 32,
+    width: 32, height: 32
   },
 })
 

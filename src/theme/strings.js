@@ -1,5 +1,5 @@
 const strings = {
-    strLogin: 'LOGIN',
+    strLogin: "LOGIN",
     strRegister: 'REGISTER',
     strSignUp: 'SignUp',
     strForgotPassword: 'Forgot Password'

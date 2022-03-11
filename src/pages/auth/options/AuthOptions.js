@@ -8,7 +8,7 @@ import { colors, images, strings } from 'theme'
 
 const styles = StyleSheet.create({
   root: {
-    flex: 1,
+    height: '100%',
     flexDirection: 'column',
     backgroundColor: colors.lightGrayPurple
   },
@@ -17,17 +17,17 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   imageBackground: {
-    flex: 1,
+    height: '100%',
     resizeMode: 'cover'
   },
   appLogo: {
     alignSelf: 'center',
-    marginTop: 90,
+    marginTop: '30%',
     width: 195,
     height: 80
   },
   loginButton: {
-    marginTop: 120,
+    marginTop: '20%',
     marginStart: 30,
     marginEnd: 30,
     marginBottom: 10
